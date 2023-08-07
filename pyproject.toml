@@ -10,7 +10,6 @@ packages = [{include = "discord_py_template"}]
 [tool.poetry.dependencies]
 python = "^3.11"
 
-
 [tool.poetry.group.dev.dependencies]
 black = "^23.7.0"
 mypy = "^1.4.1"
@@ -19,3 +18,41 @@ ruff = "^0.0.282"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+warn_unreachable = true
+implicit_reexport = true
+
+# Disable specific strict options since we don't own all the modules
+ignore_missing_imports = true
+disallow_untyped_decorators = false
+
+[tool.ruff]
+target-version = "py311"
+
+# Naming rules -> https://beta.ruff.rs/docs/rules/
+select = [
+    "F", "E", "W", "C90", "I",
+    "N", "D", "UP", "ANN", "S",
+    "BLE", "FBT", "B", "A", "COM",
+    "C4", "DTZ", "EM", "ISC", "ICN",
+    "G", "PIE", "T20", "PYI", "PT",
+    "PT", "Q", "RSE", "RET", "SLF",
+    "SIM", "TID", "TCH", "INT", "ARG",
+    "PTH", "ERA", "PD", "PGH", "PL",
+    "PLC", "PLE", "PLR", "PLW", "TRY",
+    "NPY", "RUF"
+]
+
+# Ignoring
+# `no-blank-line-before-class` (D211) in favor of `one-blank-line-before-class` (D203)
+# `multi-line-summary-first-line` (D212) in favor of `multi-line-summary-second-line` (D213)
+# Missing docstring in public function, package, module (D103, D104, D100)
+# Missing type annotation for self, *args, **kwargs (ANN101, ANN002, ANN003)
+# Imperative mood docstring start ignore (D401)
+ignore = [
+    "D211", "D212", "D100", "D103", "D104",
+    "ANN101", "ANN002", "ANN003", "D205", "D401"
+]
