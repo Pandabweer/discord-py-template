@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "discord-py-template"
-version = "0.1.4"
+version = "0.1.5"
 description = "This repository is meant to serve as a template for making new or improving existing Discord bots. This template is build to enhance the building of a Discord bot using the discord.py library."
 authors = ["Enrique Bos <enriquebos7090@gmail.com>"]
 license = "MIT"
