@@ -19,10 +19,7 @@ jobs:
         run: make build-dev
 
       - name: Run all check inside Docker container
-        run: |
-          cd bot && \
-          make format-check lint-check && \
-          docker compose run --rm bot-dev run --quiet mypy . --cache-dir=/dev/null
+        run: cd bot && make all-check
 
       - name: Cleanup
         run: docker system prune -a -f
