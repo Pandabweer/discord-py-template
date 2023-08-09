@@ -4,7 +4,7 @@ on:
     push
 
 jobs:
-    build:
+    validate-code:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout code
@@ -17,4 +17,4 @@ jobs:
               run: cd bot && make all-check
 
             - name: Cleanup
-              run: docker system prune -a
+              run: docker system prune -a -f
