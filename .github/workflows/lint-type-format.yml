@@ -22,7 +22,7 @@ jobs:
         run: |
           cd bot && \
           make format-check lint-check && \
-          docker compose run --rm bot-dev run mypy . --quiet --cache-dir=/dev/null
+          docker compose run --rm bot-dev run --quiet mypy . --cache-dir=/dev/null
 
       - name: Cleanup
         run: docker system prune -a -f
