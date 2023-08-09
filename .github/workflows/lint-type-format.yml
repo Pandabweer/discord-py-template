@@ -1,0 +1,20 @@
+name: lint-type-format
+
+on:
+    push
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v3
+
+            - name: Build Docker image
+              run: make build-dev
+
+            - name: Run all check inside Docker container
+              run: cd bot && make all-check
+
+            - name: Cleanup
+              run: docker system prune -a
