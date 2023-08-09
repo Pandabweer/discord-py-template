@@ -25,6 +25,7 @@ python_version = "3.11"
 strict = true
 warn_unreachable = true
 implicit_reexport = true
+warn_unused_ignores = false
 
 # Disable specific strict options since we don't own all the modules
 ignore_missing_imports = true
