@@ -16,7 +16,7 @@ class EnvConfig(
 
 class _Miscellaneous(EnvConfig):
     debug: ClassVar[bool] = True
-    file_logs: ClassVar[bool] = True
+    file_logs: ClassVar[bool] = False
 
 
 Miscellaneous = _Miscellaneous()
@@ -29,8 +29,8 @@ DEBUG_MODE = Miscellaneous.debug
 class _Bot(EnvConfig, env_prefix="bot_"):  # type: ignore[call-arg]
     token: ClassVar[str] = ""
     trace_loggers: ClassVar[str] = "*"
-    default_enabled_guilds: ClassVar[list[int]] = [934896901256515714]
-    owner_ids: ClassVar[list[int]] = [169790484594556928]
+    debug_guild_id: ClassVar[list[int]] = []
+    owner_ids: ClassVar[list[int]] = []
 
 
 Bot = _Bot()
