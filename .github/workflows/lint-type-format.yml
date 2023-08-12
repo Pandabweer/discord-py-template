@@ -3,7 +3,7 @@ name: lint-type-format
 on:
   push:
     branches:
-      - '*'
+      - 'main'
   pull_request:
     branches:
       - '*'

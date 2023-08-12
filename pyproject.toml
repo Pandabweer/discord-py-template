@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "discord-py-template"
-version = "0.1.8"
+version = "0.1.9"
 description = "This repository is meant to serve as a template for making new or improving existing Discord bots. This template is build to enhance the building of a Discord bot using the discord.py library."
 authors = ["Enrique Bos <enriquebos7090@gmail.com>"]
 license = "MIT"
@@ -9,10 +9,11 @@ packages = [{include = "discord_py_template"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"
+pydantic-settings = "^2.0.2"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.7.0"
-mypy = "^1.4.1"
+mypy = "^1.5.0"
 ruff = "^0.0.282"
 
 [build-system]
@@ -24,6 +25,7 @@ python_version = "3.11"
 strict = true
 warn_unreachable = true
 implicit_reexport = true
+warn_unused_ignores = false
 
 # Disable specific strict options since we don't own all the modules
 ignore_missing_imports = true

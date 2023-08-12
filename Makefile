@@ -9,3 +9,6 @@ run-dev:
 
 run-prod:
 	docker compose up bot-prod
+
+update-project:
+	poetry up && pre-commit autoupdate

@@ -6,9 +6,6 @@ services:
       context: .
       target: prod-build
       dockerfile: Dockerfile
-    environment:
-    - debug=False
-    - file_logs=False
     tty: true
 
   bot-dev:
@@ -19,9 +16,6 @@ services:
       target: dev-build
       dockerfile: Dockerfile
     tty: true
-    environment:
-    - debug=True
-    - file_logs=False
     volumes:
       - ./bot:/app/bot
       - ./.env:/app/.env
