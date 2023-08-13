@@ -1,4 +1,12 @@
-import logging
+import asyncio
+import os
 
-log = logging.Logger(__name__)
-log.warning("Hello world! Test")
+from bot import log
+
+log.setup()
+
+# On Windows, the selector event loop is required for aiodns.
+if os.name == "nt":
+    asyncio.set_event_loop_policy(
+        asyncio.WindowsSelectorEventLoopPolicy(),  # type: ignore[attr-defined]
+    )
