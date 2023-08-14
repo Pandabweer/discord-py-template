@@ -15,7 +15,7 @@ class EnvConfig(
 
 
 class _Miscellaneous(EnvConfig):
-    debug: ClassVar[bool] = True
+    debug: ClassVar[bool] = False
     file_logs: ClassVar[bool] = False
 
 
