@@ -16,5 +16,5 @@ class BotBase(commands.Bot):
             **kwargs,
         )
 
-    async def run(self, *args, **kwargs) -> None:
+    def run(self, *args, **kwargs) -> None:
         super().run(BotConfig.token, *args, **kwargs)
