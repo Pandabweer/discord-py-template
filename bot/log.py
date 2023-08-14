@@ -4,7 +4,7 @@ from logging import Logger, handlers
 from pathlib import Path
 from typing import TYPE_CHECKING, cast
 
-import coloredlogs
+import coloredlogs  # type: ignore[import]
 
 from bot.constants import LoggingConfig
 
