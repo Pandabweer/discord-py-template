@@ -20,5 +20,4 @@ services:
     - debug=True
     - file_logs=False
     volumes:
-      - ./bot:/app/bot
-      - ./.env:/app/.env
+      - .:/app/bot
