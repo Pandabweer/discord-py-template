@@ -3,8 +3,8 @@
 
 # Make exceptions for what's needed
 !bot
-!config.yml
 !.env
+!config.yml
 !Makefile
 !pyproject.toml
 !poetry.lock
