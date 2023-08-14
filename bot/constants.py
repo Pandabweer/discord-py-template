@@ -87,6 +87,7 @@ class BotConfig(metaclass=YAMLGetter):
     token: str
     prefix: str
     description: str
+    intents: int
     default_help_command: bool
     debug_guild_ids: list[int]
     owner_ids: list[int]

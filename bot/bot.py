@@ -11,6 +11,7 @@ class BotBase(commands.Bot):
             *args,
             command_prefix=BotConfig.prefix,
             description=BotConfig.description,
+            intents=Intents(BotConfig.intents),
             help_command=HelpCommand() if BotConfig.default_help_command else None,
             **kwargs,
         )
