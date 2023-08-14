@@ -12,6 +12,8 @@ python = "^3.11"
 pydantic-settings = "^2.0.2"
 coloredlogs = "^15.0.1"
 discord-py = "^2.3.2"
+pyyaml = "^6.0.1"
+python-dotenv = "^1.0.0"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.7.0"
@@ -57,6 +59,6 @@ select = [
 # Missing type annotation for self, *args, **kwargs (ANN101, ANN002, ANN003)
 # Imperative mood docstring start ignore (D401)
 ignore = [
-    "D211", "D212", "D100", "D103", "D104",
-    "ANN101", "ANN002", "ANN003", "D205", "D401"
+    "D211", "D212", "D100", "D101", "D103", "D104",
+    "ANN101", "ANN002", "ANN003", "D205", "D401", "E501"
 ]
