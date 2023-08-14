@@ -1,3 +1,5 @@
+from typing import Any
+
 from discord import Intents
 from discord.ext import commands
 from discord.ext.commands import HelpCommand
@@ -5,8 +7,8 @@ from discord.ext.commands import HelpCommand
 from bot.constants import BotConfig
 
 
-class BotBase(commands.Bot):
-    def __init__(self, *args, **kwargs) -> None:
+class BotBase(commands.Bot):  # type: ignore[misc]
+    def __init__(self, *args: Any, **kwargs: Any) -> None:
         super().__init__(
             *args,
             command_prefix=BotConfig.prefix,
@@ -16,5 +18,5 @@ class BotBase(commands.Bot):
             **kwargs,
         )
 
-    def run(self, *args, **kwargs) -> None:
+    def run(self, *args: Any, **kwargs: Any) -> None:
         super().run(BotConfig.token, *args, **kwargs)

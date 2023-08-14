@@ -1,7 +1,7 @@
 import os
 from collections.abc import Generator
 from pathlib import Path
-from typing import Generic, TypeVar
+from typing import Any, Generic, TypeVar
 
 import dotenv
 import yaml
@@ -9,7 +9,7 @@ import yaml
 dotenv.load_dotenv()
 
 
-def _env_var_constructor(loader, node) -> str | None:  # noqa: ANN001
+def _env_var_constructor(loader: Any, node: Any) -> str | None:
     """
     Implements a custom YAML tag for loading optional environment
     variables. If the environment variable is set, returns the
@@ -68,7 +68,7 @@ class YAMLGetter(Generic[T], type):
             return _CONFIG_YAML[cls.section][name]
         except KeyError as e:
             raise AttributeError(
-                f"Tried accessing configuration variable {name!r} but it was nowhere to be found"
+                f"Tried accessing configuration variable {name!r} but it was nowhere to be found",
             ) from e
 
     def __getitem__(cls, name: str) -> T:
