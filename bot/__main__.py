@@ -6,4 +6,4 @@ log = get_logger("bot")
 log.debug(LoggingConfig.debug)
 
 bot = BotBase()
-bot.run()
+bot.run(log_handler=None)

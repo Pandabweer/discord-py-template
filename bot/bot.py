@@ -5,6 +5,9 @@ from discord.ext import commands
 from discord.ext.commands import HelpCommand
 
 from bot.constants import BotConfig
+from bot.log import get_logger
+
+log = get_logger("bot")
 
 
 class BotBase(commands.Bot):
@@ -19,3 +22,6 @@ class BotBase(commands.Bot):
 
     def run(self, *args: Any, **kwargs: Any) -> None:
         super().run(BotConfig.token, *args, **kwargs)
+
+    async def on_ready(self) -> None:
+        log.info("Bot has started!")

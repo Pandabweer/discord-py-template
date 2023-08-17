@@ -69,8 +69,9 @@ def setup() -> None:
     coloredlogs.install(level=TRACE_LEVEL, logger=root_log, stream=sys.stdout)
 
     root_log.setLevel(logging.DEBUG if LoggingConfig.debug else logging.INFO)
-    get_logger("hikari").setLevel(logging.WARNING)
-    get_logger("lightbulb").setLevel(logging.WARNING)
+    get_logger("discord.gateway").setLevel(logging.INFO)
+    get_logger("discord.client").setLevel(logging.INFO)
+    get_logger("discord.http").setLevel(logging.INFO)
     get_logger("asyncio").setLevel(logging.INFO)
 
     _set_trace_loggers()
