@@ -30,10 +30,15 @@ strict = true
 warn_unreachable = true
 implicit_reexport = true
 warn_return_any = false
+exclude = ['bot.exts']
 
 # Disable specific strict options since we don't own all the modules
 ignore_missing_imports = false
 disallow_untyped_decorators = true
+
+[[tool.mypy.overrides]]
+module = "bot.exts.*"
+disallow_any_generics = false
 
 [tool.ruff]
 target-version = "py311"
@@ -58,5 +63,5 @@ select = [
 ignore = [
     "D211", "D212", "D100", "D101", "D102", "D103", "D104", "D107",
     "ANN101", "ANN002", "ANN003", "D205", "D401", "E501", "TRY003",
-    "EM102", "ANN401"
+    "EM102", "ANN401", "G004"
 ]
