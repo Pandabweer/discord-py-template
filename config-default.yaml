@@ -1,0 +1,33 @@
+bot:
+  token: !ENV TOKEN
+  prefix: "!"
+  description: "A bot that does things"
+  case_insensitive_commands: true
+  default_help_command: true
+  status: "online" # online, offline, idle, dnd
+
+  # Calculate your intents -> https://discord-intents-calculator.vercel.app
+  intents: 0
+
+  activity:
+    type: "watching" #  playing, streaming, listening, watching, competing
+    text: "you"
+  allowed_mentions:
+    everyone: false
+    users: true
+    roles: false
+    replied_user: true
+
+  # Set this to your own Discord id
+  owner_ids:
+    - 123
+
+  # This will be the guild(s) the commands sync instantly to, for dev and production push.
+  # Pushing to main will sync it globally and will take about an hour to sync
+  debug_guild_ids:
+    - 123
+
+logging:
+  debug: false
+  file_logs: false
+  trace_loggers: "*"

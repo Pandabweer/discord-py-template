@@ -85,12 +85,32 @@ class BotConfig(metaclass=YAMLGetter):
     section = "bot"
 
     token: str
+    case_insensitive_commands: bool
     prefix: str
     description: str
+    status: str
     intents: int
     default_help_command: bool
     debug_guild_ids: list[int]
     owner_ids: list[int]
+
+
+class ActivityConfig(metaclass=YAMLGetter):
+    section = "bot"
+    subsection = "activity"
+
+    atype: str
+    text: str
+
+
+class Mention(metaclass=YAMLGetter):
+    section = "bot"
+    subsection = "allowed_mentions"
+
+    everyone: bool
+    users: bool
+    roles: bool
+    replied_user: bool
 
 
 class LoggingConfig(metaclass=YAMLGetter):
