@@ -5,7 +5,6 @@ description = "This repository is meant to serve as a template for making new or
 authors = ["Enrique Bos <enriquebos7090@gmail.com>"]
 license = "MIT"
 readme = "README.md"
-packages = [{include = "discord_py_template"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"
