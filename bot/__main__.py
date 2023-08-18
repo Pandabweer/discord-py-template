@@ -1,5 +1,5 @@
-from bot import constants
-from bot.log import get_logger
+import bot
+from bot.bot import BotBase
 
-log = get_logger("bot")
-log.warning(constants.DEBUG_MODE)
+bot.instance = BotBase()
+bot.instance.run(log_handler=None)

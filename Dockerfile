@@ -32,25 +32,22 @@ RUN apt-get update && apt-get upgrade -y \
     && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
     && apt-get clean -y && rm -rf /var/lib/apt/lists/*
 
-FROM python-base AS project-setup
+FROM python-base AS dev-build
 
-WORKDIR /app
-
-COPY ./bot/Makefile ./
-COPY poetry.lock pyproject.toml ./
-
-FROM project-setup AS dev-build
+WORKDIR /app/devbot
+COPY . .
 
 RUN poetry install --with dev --no-interaction --no-ansi --no-root
-COPY . /app/bot
 
 ENTRYPOINT [ "poetry" ]
 CMD ["run", "python", "-m", "bot"]
 
-FROM project-setup AS prod-build
+FROM python-base AS prod-build
+
+WORKDIR /app/prodbot
+COPY . .
 
 RUN poetry install --without dev --no-interaction --no-ansi --no-root
-COPY . /app/bot
 
 ENTRYPOINT [ "poetry" ]
 CMD ["run", "python", "-m", "bot", "-OO"]

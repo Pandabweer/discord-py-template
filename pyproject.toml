@@ -5,17 +5,20 @@ description = "This repository is meant to serve as a template for making new or
 authors = ["Enrique Bos <enriquebos7090@gmail.com>"]
 license = "MIT"
 readme = "README.md"
-packages = [{include = "discord_py_template"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"
-pydantic-settings = "^2.0.2"
+pydantic-settings = "^2.0.3"
 coloredlogs = "^15.0.1"
+discord-py = {extras = ["voice"], version = "^2.3.2"}
+pyyaml = "^6.0.1"
+python-dotenv = "^1.0.0"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.7.0"
-mypy = "^1.5.0"
+mypy = "^1.5.1"
 ruff = "^0.0.282"
+types-pyyaml = "^6.0.12.11"
 
 [build-system]
 requires = ["poetry-core"]
@@ -26,11 +29,16 @@ python_version = "3.11"
 strict = true
 warn_unreachable = true
 implicit_reexport = true
-warn_unused_ignores = false
+warn_return_any = false
+exclude = ['bot.exts']
 
 # Disable specific strict options since we don't own all the modules
-ignore_missing_imports = true
-disallow_untyped_decorators = false
+ignore_missing_imports = false
+disallow_untyped_decorators = true
+
+[[tool.mypy.overrides]]
+module = "bot.exts.*"
+disallow_any_generics = false
 
 [tool.ruff]
 target-version = "py311"
@@ -52,10 +60,8 @@ select = [
 # Ignoring
 # `no-blank-line-before-class` (D211) in favor of `one-blank-line-before-class` (D203)
 # `multi-line-summary-first-line` (D212) in favor of `multi-line-summary-second-line` (D213)
-# Missing docstring in public function, package, module (D103, D104, D100)
-# Missing type annotation for self, *args, **kwargs (ANN101, ANN002, ANN003)
-# Imperative mood docstring start ignore (D401)
 ignore = [
-    "D211", "D212", "D100", "D103", "D104",
-    "ANN101", "ANN002", "ANN003", "D205", "D401"
+    "D211", "D212", "D100", "D101", "D102", "D103", "D104", "D107",
+    "ANN101", "ANN002", "ANN003", "D205", "D401", "E501", "TRY003",
+    "EM102", "ANN401", "G004"
 ]

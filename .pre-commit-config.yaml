@@ -7,6 +7,7 @@ repos:
     - id: check-ast
     - id: check-toml
     - id: check-yaml
+      args: [--unsafe]  # Required due to custom constructors (e.g. !ENV)
     - id: end-of-file-fixer
     - id: trailing-whitespace
       args: [--markdown-linebreak-ext=md]
@@ -14,14 +15,8 @@ repos:
   rev: 23.7.0
   hooks:
     - id: black
-- repo: https://github.com/pre-commit/mirrors-mypy
-  rev: v1.5.0
-  hooks:
-    - id: mypy
-      additional_dependencies:
-        - 'pydantic'
 - repo: https://github.com/astral-sh/ruff-pre-commit
-  rev: v0.0.284
+  rev: v0.0.285
   hooks:
     - id: ruff
 - repo: https://github.com/python-poetry/poetry
@@ -37,5 +32,11 @@ repos:
       name: poetry-up
       entry: poetry
       args: ["up"]
+      language: system
+      pass_filenames: false
+    - id: mypy
+      name: mypy
+      entry: mypy
+      args: ["."]
       language: system
       pass_filenames: false

@@ -16,6 +16,8 @@ services:
       target: dev-build
       dockerfile: Dockerfile
     tty: true
+    environment:
+    - debug=True
+    - file_logs=False
     volumes:
-      - ./bot:/app/bot
-      - ./.env:/app/.env
+      - .:/app/bot

@@ -4,9 +4,9 @@ from logging import Logger, handlers
 from pathlib import Path
 from typing import TYPE_CHECKING, cast
 
-import coloredlogs
+import coloredlogs  # type: ignore[import]
 
-from bot import constants
+from bot.constants import LoggingConfig
 
 TRACE_LEVEL = 5
 
@@ -47,7 +47,7 @@ def setup() -> None:
     format_string = "%(asctime)s | %(name)s | %(levelname)s | %(message)s"
     log_format = logging.Formatter(format_string)
 
-    if constants.FILE_LOGS:
+    if LoggingConfig.file_logs:
         log_file = Path("logs", "bot.log")
         log_file.parent.mkdir(exist_ok=True)
         file_handler = handlers.RotatingFileHandler(
@@ -68,9 +68,11 @@ def setup() -> None:
     coloredlogs.DEFAULT_LOG_FORMAT = format_string
     coloredlogs.install(level=TRACE_LEVEL, logger=root_log, stream=sys.stdout)
 
-    root_log.setLevel(logging.DEBUG if constants.DEBUG_MODE else logging.INFO)
-    get_logger("hikari").setLevel(logging.WARNING)
-    get_logger("lightbulb").setLevel(logging.WARNING)
+    root_log.setLevel(logging.DEBUG if LoggingConfig.debug else logging.INFO)
+    get_logger("discord.gateway").setLevel(logging.WARNING)
+    get_logger("discord.client").setLevel(logging.WARNING)
+    get_logger("discord.http").setLevel(logging.INFO)
+    get_logger("discord.webhook.async_").setLevel(logging.INFO)
     get_logger("asyncio").setLevel(logging.INFO)
 
     _set_trace_loggers()
@@ -90,7 +92,7 @@ def _set_trace_loggers() -> None:
     Otherwise if the env var begins with a "*",
     the root logger is set to the trace level and other contents are ignored.
     """
-    level_filter = constants.Bot.trace_loggers
+    level_filter = LoggingConfig.trace_loggers
     if level_filter:
         if level_filter.startswith("*"):
             get_logger().setLevel(TRACE_LEVEL)

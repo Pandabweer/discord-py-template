@@ -1,5 +1,10 @@
-.venv
-__pycache__
-.gitignore
-*.log
-docker
+# Exclude everything
+*
+
+# Make exceptions for what's needed
+!bot
+!.env
+!config.yml
+!Makefile
+!pyproject.toml
+!poetry.lock

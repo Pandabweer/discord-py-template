@@ -1,7 +1,11 @@
 import asyncio
 import os
+from typing import TYPE_CHECKING
 
 from bot import log
+
+if TYPE_CHECKING:
+    from bot.bot import BotBase
 
 log.setup()
 
@@ -10,3 +14,5 @@ if os.name == "nt":
     asyncio.set_event_loop_policy(
         asyncio.WindowsSelectorEventLoopPolicy(),  # type: ignore[attr-defined]
     )
+
+instance: "BotBase" = None  #  type: ignore[assignment]
