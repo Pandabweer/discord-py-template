@@ -34,11 +34,9 @@ repos:
       args: ["up"]
       language: system
       pass_filenames: false
-      serial: true
     - id: mypy
       name: mypy
       entry: mypy
       args: ["."]
       language: system
       pass_filenames: false
-      serial: true
