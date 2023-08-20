@@ -1,6 +1,6 @@
 # All command are executed trough Docker in a Poetry environment.
 # prun, meaning poetry run, because the entrypoint is poetry we don't need to specify it.
-prun := docker-compose run --rm bot-dev run --quiet
+prun := docker compose run --rm bot-dev run --quiet
 black := $(prun) black .
 
 format-check:
