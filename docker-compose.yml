@@ -7,6 +7,9 @@ services:
       target: prod-build
       dockerfile: Dockerfile
     tty: true
+    mem_limit: 512m
+    mem_reservation: 128m
+    cpus: 0.25
 
   bot-dev:
     container_name: discord-bot-dev
@@ -18,3 +21,6 @@ services:
     tty: true
     volumes:
       - .:/app/bot
+    mem_limit: 512m
+    mem_reservation: 128m
+    cpus: 0.25
