@@ -9,6 +9,8 @@ services:
     tty: true
     mem_limit: 512m
     cpus: 0.25
+    environment:
+      - TOKEN=${TOKEN}
 
   bot-dev:
     container_name: discord-bot-dev
