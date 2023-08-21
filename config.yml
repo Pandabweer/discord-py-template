@@ -7,10 +7,10 @@ bot:
   status: "online" # online, offline, idle, dnd
 
   # Calculate your intents -> https://discord-intents-calculator.vercel.app
-  intents: 0
+  intents: 3276799
 
   activity:
-    type: "watching" #  playing, streaming, listening, watching, competing
+    atype: "watching" #  playing, streaming, listening, watching, competing
     text: "you"
   allowed_mentions:
     everyone: false
@@ -20,12 +20,11 @@ bot:
 
   # Set this to your own Discord id
   owner_ids:
-    - 123
+    - 169790484594556928
 
-  # This will be the guild(s) the commands sync instantly to, for dev and production push.
+  # This will be the guild the commands sync instantly to, for dev and production push.
   # Pushing to main will sync it globally and will take about an hour to sync
-  debug_guild_ids:
-    - 123
+  debug_guild_id: 934896901256515714
 
 logging:
   debug: false

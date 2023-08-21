@@ -1,5 +1,4 @@
 # Custom user configuration
-config.yml
 docker-compose.override.yml
 
 # Byte-compiled / optimized / DLL files
