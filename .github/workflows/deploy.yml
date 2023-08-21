@@ -18,5 +18,8 @@ jobs:
             git fetch origin bot-preview
             git reset --hard FETCH_HEAD
             git clean -d -f --exclude secrets
+            rm -rf .env
+            echo -e "TOKEN=${{ secrets.DISCORD_TOKEN }}" >> .env
             docker compose build --no-cache bot-prod
-            docker compose up bot-dev --detach --no-build
+            docker compose up bot-prod --detach --no-build
+            docker system prune -a -f
