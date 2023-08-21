@@ -20,4 +20,3 @@ jobs:
             git clean -d -f --exclude secrets
             docker compose build --no-cache bot-prod
             docker compose up bot-dev --detach --no-build
-            docker system prune -a -f
