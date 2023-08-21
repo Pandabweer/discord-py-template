@@ -6,22 +6,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Install SSH Key
-        uses: shimataro/ssh-key-action@v2
-        with:
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          known_hosts: unnecessary
-
-      - name: Adding Known Hosts
-        run: ssh-keyscan -p ${{ secrets.SSH_PORT }} -H ${{ secrets.SSH_HOST }}  >> ~/.ssh/known_hosts
-
-      - name: Sync repository
-        run: rsync -avz -e "ssh -p ${{ secrets.SSH_PORT }}" ./dist/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/discord-py-template/
-
-      - name: Build project and run
+      - name: Deploy project
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SSH_HOST }}
@@ -30,6 +15,9 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             cd ~/discord-py-template/
+            git fetch origin bot-preview
+            git reset --hard FETCH_HEAD
+            git clean -d -f --exclude secrets
             make build-dev
             chown $(whoami) .
             docker compose up bot-dev --detach
