@@ -10,7 +10,7 @@ bot:
   intents: 0
 
   activity:
-    type: "watching" #  playing, streaming, listening, watching, competing
+    atype: "watching" #  playing, streaming, listening, watching, competing
     text: "you"
   allowed_mentions:
     everyone: false
@@ -22,10 +22,9 @@ bot:
   owner_ids:
     - 123
 
-  # This will be the guild(s) the commands sync instantly to, for dev and production push.
+  # This will be the guild the commands sync instantly to, for dev and production push.
   # Pushing to main will sync it globally and will take about an hour to sync
-  debug_guild_ids:
-    - 123
+  debug_guild_id: 123
 
 logging:
   debug: false
