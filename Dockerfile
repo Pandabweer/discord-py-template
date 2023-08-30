@@ -1,4 +1,4 @@
-FROM enriquebos/python-poetry:py-slim-3.11.5-poetry-1.6.1 AS dev-build
+FROM enriquebos/python-poetry:py-3.11-poetry-1.6.1 AS dev-build
 
 WORKDIR /app/devbot
 COPY . .
