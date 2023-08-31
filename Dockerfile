@@ -1,13 +1,11 @@
-FROM enriquebos/python-poetry:py-3.11-poetry-1.6.1 AS dev-build
+FROM enriquebos/python-poetry:py-3.11-poetry-1.6.1
 
-WORKDIR /app/devbot
+ARG build=without dev
+
+WORKDIR /app
 COPY . .
 
-RUN poetry install --with dev --no-interaction --no-ansi --no-root
+RUN poetry install --${build} --no-interaction --no-ansi --no-root
 
-FROM enriquebos/python-poetry:py-3.11-poetry-1.6.1 AS prod-build
-
-WORKDIR /app/prodbot
-COPY . .
-
-RUN poetry install --without dev --no-interaction --no-ansi --no-root
+ENTRYPOINT [ "poetry" ]
+CMD [ "run", "python", "-m", "bot" ]

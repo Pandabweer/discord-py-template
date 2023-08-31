@@ -1,27 +1,30 @@
 services:
   bot-base: &bot-base
     restart: unless-stopped
-    tty: true
-    entrypoint: poetry
     build:
       context: .
       dockerfile: Dockerfile
-    command: run python -m bot
 
   bot-prod:
     <<: *bot-base
     container_name: discord-bot
-    build:
-      target: prod-build
     mem_limit: 2048m
-    cpus: 2
+    cpus: 6
 
   bot-dev:
     <<: *bot-base
     container_name: discord-bot-dev
-    build:
-      target: dev-build
-    volumes:
-      - ./bot/exts:/app/devbot/bot/exts
     mem_limit: 512m
-    cpus: 1
+    cpus: 2
+    build:
+      args:
+        - build=with dev
+    volumes:
+      - ./bot/exts:/app/bot/exts
+    x-develop:
+      watch:
+        - action: sync
+          path: ./bot
+          target: /app/bot
+        - action: rebuild
+          path: poetry.lock

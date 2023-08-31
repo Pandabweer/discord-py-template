@@ -15,3 +15,7 @@ build-prod:
 
 update-deps:
 	poetry up && pre-commit autoupdate
+
+watch:
+	docker compose up bot-dev --wait
+	docker compose alpha watch
