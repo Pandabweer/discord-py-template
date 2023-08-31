@@ -1,24 +1,28 @@
 services:
-  bot-prod:
-    container_name: discord-bot
+  bot-base: &bot-base
     restart: unless-stopped
+    tty: true
+    entrypoint: poetry
     build:
       context: .
-      target: prod-build
       dockerfile: Dockerfile
-    tty: true
-    mem_limit: 512m
-    cpus: 0.25
+
+  bot-prod:
+    <<: *bot-base
+    container_name: discord-bot
+    build:
+      target: prod-build
+    mem_limit: 2048m
+    cpus: 2
+    command: run python -m bot -OO
 
   bot-dev:
+    <<: *bot-base
     container_name: discord-bot-dev
-    restart: unless-stopped
     build:
-      context: .
       target: dev-build
-      dockerfile: Dockerfile
-    tty: true
     volumes:
       - .:/app/bot
     mem_limit: 512m
-    cpus: 0.25
+    cpus: 0.5
+    command: run python -m bot
