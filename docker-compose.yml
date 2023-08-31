@@ -6,6 +6,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    command: run python -m bot
 
   bot-prod:
     <<: *bot-base
@@ -14,7 +15,6 @@ services:
       target: prod-build
     mem_limit: 2048m
     cpus: 2
-    command: run python -m bot -OO
 
   bot-dev:
     <<: *bot-base
@@ -25,4 +25,3 @@ services:
       - ./bot/exts:/app/devbot/bot/exts
     mem_limit: 512m
     cpus: 1
-    command: run python -m bot
