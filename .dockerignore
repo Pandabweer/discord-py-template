@@ -5,6 +5,5 @@
 !bot
 !.env
 !config.yml
-!Makefile
 !pyproject.toml
 !poetry.lock
