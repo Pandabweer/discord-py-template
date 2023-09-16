@@ -1,10 +1,10 @@
-run:
+run-local:
 	poetry run python -m bot
 
-run-docker-dev:
+run-dev:
 	docker compose up bot-dev
 
-run-docker-prod:
+run-prod:
 	docker compose up bot-prod
 
 build-dev:
@@ -15,3 +15,7 @@ build-prod:
 
 update-deps:
 	poetry up && pre-commit autoupdate
+
+watch:
+	docker compose up bot-dev --wait
+	docker compose alpha watch

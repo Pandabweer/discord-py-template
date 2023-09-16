@@ -27,7 +27,7 @@ class BotBase(commands.AutoShardedBot):
             case_insensitive=BotConfig.case_insensitive_commands,
             description=BotConfig.description,
             intents=Intents(BotConfig.intents),
-            status=getattr(Status, BotConfig.status),
+            status=getattr(Status, BotConfig.status, Status.online),
             help_command=HelpCommand() if BotConfig.default_help_command else None,
             **kwargs,
         )
